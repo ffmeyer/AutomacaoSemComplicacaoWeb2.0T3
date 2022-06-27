@@ -6,11 +6,13 @@ import br.com.chronosAcademy.pages.LoginPage;
 import br.com.chronosAcademy.pages.NewAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
 
+import java.io.IOException;
 import java.util.Map;
 
 public class LoginSteps {
@@ -18,19 +20,26 @@ public class LoginSteps {
     LoginPage loginPage;
     String username;
 
+
     @Before
-    public void iniciarNavegador(){
+    public void iniciarNavegador(Scenario cenario){
         //driver e estatico
         new Driver(Browser.CHROME);
+        Driver.setNomeCenario(cenario.getName());
+        Driver.criaDiretorio();
     }
 
     @After
-    public void fechaNavegador(){
+    public void fechaNavegador(Scenario cenario) throws IOException {
+        if (cenario.isFailed()){
+            Driver.printScreen("erro no cenario");
+    }
         Driver.getDriver().quit();
     }
 
     @Dado("que a modal esteja sendo exibida")
     public void queAModalEstejaSendoExibida() {
+
         Driver.getDriver().get("https://www.advantageonlineshopping.com/");
         loginPage = new LoginPage();
         loginPage.clickBtnLogin();
@@ -70,7 +79,7 @@ public class LoginSteps {
     }
 
     @Quando("os campos de login forem preenchidos da seguinte forma")
-    public void osCamposDeLoginForemPreenchidosDaSeguinteForma(Map<String, String> map) {
+    public void osCamposDeLoginForemPreenchidosDaSeguinteForma(Map<String, String> map) throws IOException {
         username = map.get("login");
         String password = map.get("password");
         boolean remember = Boolean.parseBoolean(map.get("remember"));
@@ -83,6 +92,7 @@ public class LoginSteps {
         }
         loginPage.aguardaLoader();
         if(remember) loginPage.clickInpRemember();
+        Driver.printScreen("Preenchimento dos campos de login");
     }
 
     @Quando("for realizado um clique no botao sign in")
@@ -91,8 +101,9 @@ public class LoginSteps {
     }
 
     @Entao("deve ser possivel logar no sistema")
-    public void deveSerPossivelLogarNoSistema() {
-        Assert.assertEquals(username, loginPage.getUsuarioLogado());
+    public void deveSerPossivelLogarNoSistema() throws IOException {
+        Assert.assertEquals(username,loginPage.getUsuarioLogado());
+        Driver.printScreen("Logado no Sistema");
     }
 
     @Entao("o sistema deve exibir uma mensagem de erro")
