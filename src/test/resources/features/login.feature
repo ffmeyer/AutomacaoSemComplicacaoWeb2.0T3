@@ -14,11 +14,10 @@ Funcionalidade: Login
     Quando for realizado um clique no icone de fechar
     Entao a janela modal deve ser fechada
 
-  @createAccount
+  @createNewAccount
   Cenario: Link Create New Account
     Quando for realizado um clique no link Create New Account
     Entao a pagina Create new Account deve ser exibida
-
   @loginComSucesso
   Esquema do Cenario: Realizar login com <identificacao>
     Quando os campos de login forem preenchidos da seguinte forma
@@ -32,9 +31,7 @@ Funcionalidade: Login
       | identificacao       | login   | password | remember |
       | todos os campos     | erro    | Senha123 | true     |
       | campos obrigatorios | chronos | Senha123 | false    |
-
-
-  @loginInvalido
+  @LoginInvalido
   Esquema do Cenario: Realizar login com <identificacao>
     Quando os campos de login forem preenchidos da seguinte forma
       | login    | <login>    |

@@ -1,7 +1,10 @@
-package br.com.chronosAcademy.pages;
+package br.com.ChronosAcademy.pages;
 
-import br.com.chronosAcademy.maps.PrincipalMap;
+import br.com.ChronosAcademy.maps.PrincipalMap;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PrincipalPage {

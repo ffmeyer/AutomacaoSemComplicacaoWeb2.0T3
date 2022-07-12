@@ -1,13 +1,13 @@
-package br.com.chronosAcademy.pages;
+package br.com.ChronosAcademy.pages;
 
-import br.com.chronosAcademy.core.Driver;
-import br.com.chronosAcademy.maps.LoginMap;
+import br.com.ChronosAcademy.core.Driver;
+import br.com.ChronosAcademy.maps.LoginMap;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
     LoginMap loginMap;
 
-    public LoginPage() {
+    public LoginPage(){
         loginMap = new LoginMap();
         PageFactory.initElements(Driver.getDriver(), loginMap);
     }
@@ -61,8 +61,7 @@ public class LoginPage {
         Driver.attributeChange(loginMap.divLoader, "display", "none");
     }
 
-    public String getUsuarioLogado()
-    {
+    public String getUsuarioLogado(){
         Driver.visibilityOf(loginMap.txtLogado);
         return loginMap.txtLogado.getText();
     }
@@ -71,5 +70,4 @@ public class LoginPage {
         Driver.visibilityOf(loginMap.txtErroLogin);
         return loginMap.txtErroLogin.getText();
     }
-
 }
