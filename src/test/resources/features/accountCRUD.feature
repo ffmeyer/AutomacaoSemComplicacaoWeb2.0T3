@@ -6,8 +6,8 @@ Funcionalidade: Account CRUD
   Cenario: Cadastro nova conta
     Dado que a pagina new account esteja sendo exibida
     Quando os campos de cadastro estiverem preenchidos com
-      | username | IdaReed              |
-      | email    | IdaWReed@dayrep.com  |
+      | username | IdaReed2              |
+      | email    | IdaWReed2@dayrep.com  |
       | password | Senha123             |
       | country  | Brazil               |
     Entao deve ser possivel logar no sistema apos o cadastro

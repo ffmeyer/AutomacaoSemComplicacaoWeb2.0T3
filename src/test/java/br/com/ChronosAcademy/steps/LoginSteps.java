@@ -1,4 +1,4 @@
-package br.com.chronosAcademy.steps;
+package br.com.ChronosAcademy.steps;
 
 import br.com.ChronosAcademy.core.Driver;
 import br.com.ChronosAcademy.enums.Browser;

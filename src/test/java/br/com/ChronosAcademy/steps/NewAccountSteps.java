@@ -1,5 +1,6 @@
 package br.com.ChronosAcademy.steps;
 
+import br.com.ChronosAcademy.enums.Browser;
 import br.com.ChronosAcademy.pages.LoginPage;
 import br.com.ChronosAcademy.core.Driver;
 import br.com.ChronosAcademy.pages.NewAccountPage;
@@ -17,11 +18,13 @@ public class NewAccountSteps {
 
     @Dado("que a pagina new account esteja sendo exibida")
     public void queAPaginaNewAccountEstejaSendoExibida() {
+        new Driver(Browser.CHROME);
         newAccountPage = new NewAccountPage();
         Driver.getDriver().get("https://www.advantageonlineshopping.com/#/");
         Driver.getDriver().get("https://www.advantageonlineshopping.com/#/register");
         Assert.assertEquals("CREATE ACCOUNT", newAccountPage.getTextNewAccount());
     }
+
     @Quando("os campos de cadastro estiverem preenchidos com")
     public void osCamposDeCadastroEstiveremPreenchidosCom(Map<String, String> map) {
         username = map.get("username");
